@@ -1,0 +1,45 @@
+---
+import styles from './AboutSection.module.scss';
+
+export interface TeamMember {
+  name: string;
+  bio: string;
+  imageSrc?: string;
+}
+
+export interface Props {
+  sectionLabel: string;
+  heading: string;
+  body: string;
+  team: TeamMember[];
+}
+
+const { sectionLabel, heading, body, team } = Astro.props;
+---
+
+<section class={styles.about} id="about" aria-labelledby="about-heading">
+  <div class={`container ${styles.inner}`}>
+
+    <div class={styles.textCol}>
+      <p class="section-label" style="color: #8a8a82;">{sectionLabel}</p>
+      <h2 class={styles.heading} id="about-heading">{heading}</h2>
+      <p class={styles.body}>{body}</p>
+    </div>
+
+    <div class={styles.teamGrid}>
+      {team.map(member => (
+        <article class={styles.card}>
+          {member.imageSrc
+            ? <img src={member.imageSrc} alt={`Photo de ${member.name}`} class={styles.avatar} width="56" height="56" loading="lazy" />
+            : <div class={styles.avatarPlaceholder} aria-hidden="true"></div>
+          }
+          <div>
+            <p class={styles.cardName}>{member.name}</p>
+            <p class={styles.cardText}>{member.bio}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+
+  </div>
+</section>

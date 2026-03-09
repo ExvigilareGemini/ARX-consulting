@@ -1,0 +1,122 @@
+---
+import styles from './ContactSection.module.scss';
+
+export interface Props {
+  sectionLabel: string;
+  heading: string;
+  body: string;
+  email: string;
+  phone: string;
+  privacyUrl: string;
+  web3formsKey: string;
+}
+
+const {
+  sectionLabel,
+  heading,
+  body,
+  email,
+  phone,
+  privacyUrl,
+  web3formsKey,
+} = Astro.props;
+---
+
+<section class={styles.contact} id="contact" aria-labelledby="contact-heading">
+  <div class={`container ${styles.inner}`}>
+
+    <!-- Left -->
+    <div class={styles.textCol}>
+      <p class="section-label" style="color: #8a8a82;">{sectionLabel}</p>
+      <h2 class={styles.heading} id="contact-heading">{heading}</h2>
+      <p class={styles.body}>{body}</p>
+
+      <ul class={styles.contactItems}>
+        <li class={styles.contactItem}>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <path d="m2 7 10 7 10-7"/>
+          </svg>
+          <a href={`mailto:${email}`}>{email}</a>
+        </li>
+        <li class={styles.contactItem}>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 11.39 19a19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          <a href={`tel:${phone.replace(/\s/g, '')}`}>{phone}</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Right: form -->
+    <div class={styles.formCard}>
+      <form id="contact-form" novalidate>
+        <input type="hidden" name="access_key" value={web3formsKey} />
+        <input type="hidden" name="subject" value="Nouvelle demande – ARX Consulting" />
+        <input type="checkbox" name="botcheck" style="display:none" />
+
+        <div class={styles.formGroup}>
+          <input
+            class={styles.input}
+            type="text"
+            name="name"
+            placeholder="Nom complet"
+            required
+            autocomplete="name"
+          />
+        </div>
+
+        <div class={styles.formGroup}>
+          <input
+            class={styles.input}
+            type="email"
+            name="email"
+            placeholder="Adresse mail"
+            required
+            autocomplete="email"
+          />
+        </div>
+
+        <div class={styles.formGroup}>
+          <input
+            class={styles.input}
+            type="tel"
+            name="phone"
+            placeholder="Téléphone"
+            autocomplete="tel"
+          />
+        </div>
+
+        <div class={styles.formGroup}>
+          <textarea
+            class={styles.textarea}
+            name="message"
+            placeholder="Parlez nous de vos besoins en sécurité …"
+            required
+          ></textarea>
+        </div>
+
+        <div class={styles.checkboxRow}>
+          <input type="checkbox" id="privacy" name="privacy" required />
+          <label for="privacy">
+            J'accepte la <a href={privacyUrl}>politique de confidentialité</a>
+          </label>
+        </div>
+
+        <button type="submit" class={styles.btn} id="submit-btn">
+          Envoyer le message
+        </button>
+
+        <p class={styles.successMsg} id="success-msg" role="status" aria-live="polite">
+          ✓ Message envoyé ! Nous vous répondrons dans les plus brefs délais.
+        </p>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  import { initContactForm } from '../scripts/contact.js';
+  initContactForm();
+</script>

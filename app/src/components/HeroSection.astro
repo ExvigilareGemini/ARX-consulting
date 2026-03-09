@@ -1,0 +1,34 @@
+---
+import styles from './HeroSection.module.scss';
+import BgImg from "../../public/images/bgImg.svg"
+
+export interface Props {
+  title: string;
+  titleAccent: string;
+  titleEnd?: string;
+  tagline: string;
+}
+
+const { title, titleAccent, titleEnd, tagline } = Astro.props;
+---
+
+<section class={styles.hero} id="hero" aria-labelledby="hero-title">
+
+  <!-- Slot réservé pour le SVG hero — à intégrer ultérieurement -->
+  <div class={styles.svgSlot} aria-hidden="true">
+    <BgImg></BgImg>
+  </div>
+
+  <div class={styles.overlay} aria-hidden="true"></div>
+
+  <div class={styles.content}>
+    <h1 class={styles.title} id="hero-title">
+      {title}
+      <span class={styles.accent}>{titleAccent}</span><br />
+      {titleEnd && titleEnd}
+    </h1>
+
+    <p class={styles.tagline}>{tagline}</p>
+  </div>
+
+</section>

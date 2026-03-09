@@ -1,0 +1,49 @@
+---
+import styles from './Footer.module.scss';
+import Logo from "../../public/images/logoWhite.svg"
+
+const navLinks = [
+  { label: 'Accueil', href: '#hero' },
+  { label: 'Qui sommes-nous ?', href: '#about' },
+  { label: 'Nos services', href: '#services' },
+  { label: 'Contact', href: '#contact' },
+];
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class={styles.footer} aria-label="Pied de page">
+  <div class="container">
+
+    <div class={styles.inner}>
+
+      <!-- Brand -->
+      <div class={styles.brand}>
+        <div class={styles.logoWrap}>
+          <!-- Logo placeholder : remplacer par votre SVG -->
+          <Logo><Logo/>
+          ARX Consulting
+        </div>
+        <p class={styles.tagline}>Les formations en cybersécurité à portée de main</p>
+      </div>
+
+      <!-- Nav -->
+      <nav class={styles.navCol} aria-label="Navigation pied de page">
+        {navLinks.map(link => (
+          <a href={link.href} class={styles.navLink}>{link.label}</a>
+        ))}
+      </nav>
+
+    </div>
+
+    <!-- Bottom bar -->
+    <div class={styles.bottom}>
+      <div class={styles.legal}>
+        <a href="/mentions-legales" class={styles.legalLink}>Mentions légales</a>
+        <a href="/politique-de-confidentialite" class={styles.legalLink}>Politique de confidentialité</a>
+      </div>
+      <p class={styles.copy}>Tous droits réservés © {currentYear}</p>
+    </div>
+
+  </div>
+</footer>

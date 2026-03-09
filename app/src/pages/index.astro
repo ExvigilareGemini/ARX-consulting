@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import HeroSection from '../components/HeroSection.astro';
+import AboutSection from '../components/AboutSection.astro';
+import ServicesSection from '../components/ServicesSection.astro';
+import ContactSection from '../components/ContactSection.astro';
+import Footer from '../components/Footer.astro';
+
+// ─── About data ──────────────────────────────────────────
+const team = [
+  {
+    name: 'Cameron Williamson',
+    bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
+    // imageSrc: '/images/cameron-williamson.jpg',
+  },
+  {
+    name: 'Wade Warren',
+    bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
+    // imageSrc: '/images/wade-warren.jpg',
+  },
+  {
+    name: 'Guy Hawkins',
+    bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
+    // imageSrc: '/images/guy-hawkins.jpg',
+  },
+];
+
+// ─── Services data ───────────────────────────────────────
+const services = [
+  {
+    title: 'Comprendre les arnaques modernes',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    items: [
+      'Phishing (emails frauduleux)',
+      'Faux SMS bancaires',
+      'Faux support technique',
+      'Arnaques Facebook / WhatsApp',
+      'Démonstrations concrètes',
+    ],
+  },
+  {
+    title: 'Comprendre les arnaques modernes',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    items: [
+      'Phishing (emails frauduleux)',
+      'Faux SMS bancaires',
+      'Faux support technique',
+      'Arnaques Facebook / WhatsApp',
+      'Démonstrations concrètes',
+    ],
+  },
+  {
+    title: 'Comprendre les arnaques modernes',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    items: [
+      'Phishing (emails frauduleux)',
+      'Faux SMS bancaires',
+      'Faux support technique',
+      'Arnaques Facebook / WhatsApp',
+      'Démonstrations concrètes',
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="ARX Consulting – Cybersécurité à portée de main"
+  description="ARX Consulting est un organisme de formation spécialisé en cybersécurité, né d'une nouvelle génération de professionnels récemment diplômés."
+>
+  <Header />
+
+  <main>
+    <HeroSection
+      title="LA"
+      titleAccent="CYBERSÉCURITÉ"
+      titleEnd="À PORTÉE DE MAIN"
+      tagline="Notre objectif : donner aux individus et aux organisations les moyens d'acquérir une formation complète en cybersécurité et des stratégies de prévention des menaces."
+    >
+      <!--
+        Slot hero-svg : insérer ici votre illustration SVG une fois disponible.
+        Exemple :
+        <img slot="hero-svg" src="/images/hero.svg" alt="" aria-hidden="true" />
+      -->
+    </HeroSection>
+
+    <AboutSection
+      sectionLabel="QUI SOMMES NOUS"
+      heading="EXPERTS EN CYBERSÉCURITÉ"
+      body="Nous sommes un organisme de formation spécialisé en cybersécurité, né d'une nouvelle génération de professionnels récemment diplômés, formés aux dernières normes, outils et menaces du paysage numérique actuel. Notre approche pédagogique, moderne et opérationnelle, vise à transmettre des compétences concrètes, directement applicables, en phase avec les exigences réelles du marché et les standards internationaux."
+      team={team}
+    />
+
+    <ServicesSection
+      sectionLabel="NOS SERVICES"
+      heading="NOS MODULES DE FORMATIONS"
+      services={services}
+    />
+
+    <ContactSection
+      sectionLabel="CONTACTEZ NOUS"
+      heading="FAITES APPEL À NOS SERVICES"
+      body="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+      email="contact@arxconsulting.com"
+      phone="+32 499 37 37 37"
+      privacyUrl="/politique-de-confidentialite"
+      web3formsKey="YOUR_WEB3FORMS_KEY"
+    />
+  </main>
+
+  <Footer />
+
+</BaseLayout>
