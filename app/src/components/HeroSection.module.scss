@@ -1,11 +1,21 @@
+@use "../styles/mixins" as *;
+
 .hero {
   position: relative;
-  min-height: 100svh;
+  aspect-ratio: 14 / 9;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: calc(var(--header-height) + 2.4rem) auto 0;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
+  align-items: center;
   overflow: hidden;
   background-color: white;
+  @include for-tablet-landscape-up {
+    aspect-ratio: unset;
+    height: 100vh;
+  }
 }
 
 // ─── SVG placeholder slot ─────────────────────────────────
@@ -17,51 +27,52 @@
   justify-content: flex-end;
   pointer-events: none;
   z-index: 0;
-
+    @include for-tablet-landscape-up {
+      width: 200%;
+    }
   // Le SVG réel viendra ici – on réserve l'espace
-  svg, img {
-    width: 60%;
+  svg,
+  img {
+    width: 100%;
     height: 100%;
     object-fit: contain;
-    opacity: 0.55;
+    opacity: 0.75;
 
-    @media (max-width: 768px) {
-      width: 100%;
-      opacity: 0.25;
-    }
+
   }
 }
 
 // ─── Content ─────────────────────────────────────────────
 .content {
   position: relative;
-  z-index: 2;
-  max-width: var(--max-width);
-  margin-inline: auto;
-  padding-inline: var(--section-px);
-  padding-top: calc(var(--section-py) + 80px);
-  padding-bottom: var(--section-py);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
   width: 100%;
-
-  
+  height: 100%;
+  max-width: var(--max-width);
+  z-index: 2;
 }
 
 .title {
+  width: fit-content;
   font-family: var(--font-mono);
   font-size: 5rem;
   font-weight: 700;
-  line-height: 1.0;
-  letter-spacing: -0.01em;
+  line-height: 1;
   text-transform: uppercase;
-  color: var(--color-text);
-  margin-bottom: 0.1em;
+  color: var(--color-text-light);
 
-    background: rgba(26, 28, 31, 0.85);
-  border: 1px solid var(--color-border);
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(2.3px);
+  -webkit-backdrop-filter: blur(2.3px);
   border-left: 3px solid var(--color-accent);
   padding: 1.5rem 1.75rem;
   border-radius: var(--radius-md);
+  @include for-tablet-landscape-up {
+    font-size: 2.5rem;
 
+  }
   .accent {
     color: var(--color-accent);
   }
@@ -72,7 +83,9 @@
   margin-top: 3rem;
   margin-left: auto;
 
-  background: rgba(26, 28, 31, 0.85);
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(2.3px);
+  -webkit-backdrop-filter: blur(2.3px);
   border: 1px solid var(--color-border);
   border-left: 3px solid var(--color-accent);
   padding: 1.5rem 1.75rem;
@@ -80,7 +93,7 @@
 
   font-family: var(--font-body);
   font-size: 0.9rem;
-  color: var(--color-text-muted);
+  color: var(--color-text-light);
   line-height: 1.7;
 
   @media (max-width: 768px) {

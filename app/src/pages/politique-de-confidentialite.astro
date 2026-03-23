@@ -1,0 +1,211 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import styles from '../styles/politique-confidentialite.module.scss';
+
+const rights = [
+  { label: 'Droit d\'accès', description: 'Obtenir une copie des données personnelles vous concernant.' },
+  { label: 'Droit de rectification', description: 'Corriger des données inexactes ou incomplètes.' },
+  { label: 'Droit à l\'effacement', description: 'Demander la suppression de vos données (« droit à l\'oubli »).' },
+  { label: 'Droit à la limitation', description: 'Restreindre le traitement de vos données dans certains cas.' },
+  { label: 'Droit à la portabilité', description: 'Recevoir vos données dans un format structuré et lisible.' },
+  { label: 'Droit d\'opposition', description: 'Vous opposer au traitement de vos données pour motif légitime.' },
+];
+---
+
+<BaseLayout
+  title="Politique de confidentialité – ARX Consulting"
+  description="Politique de confidentialité et protection des données personnelles du site ARX Consulting."
+>
+  <Header />
+
+  <main class={styles.page}>
+
+    <!-- Band hero -->
+    <div class={styles.band}>
+      <div class={styles.bandInner}>
+        <p class={styles.bandLabel}>Données personnelles</p>
+        <h1 class={styles.bandTitle}>
+          POLITIQUE DE<br />
+          <span class={styles.bandTitle__accent}>CONFIDENTIALITÉ</span>
+        </h1>
+      </div>
+    </div>
+
+    <div class={styles.content}>
+
+      <!-- Section 1 : Introduction -->
+      <section class={styles.section} aria-labelledby="intro-heading">
+        <p class={styles.sectionTitle}>01</p>
+        <h2 class={styles.sectionHeading} id="intro-heading">Introduction</h2>
+        <div class={styles.text}>
+          <p>
+            ARX Consulting s'engage à protéger la vie privée des utilisateurs de son site web.
+            La présente politique décrit comment nous collectons, utilisons et protégeons vos
+            données personnelles, conformément au Règlement Général sur la Protection des Données
+            (RGPD — UE&nbsp;2016/679) et à la législation belge applicable.
+          </p>
+          <p>
+            <strong>Responsable du traitement :</strong> [NOM DE LA SOCIÉTÉ],
+            [Adresse du siège social] —
+            <a href="mailto:contact@arxconsulting.com">contact@arxconsulting.com</a>
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 2 : Données collectées -->
+      <section class={styles.section} aria-labelledby="donnees-heading">
+        <p class={styles.sectionTitle}>02</p>
+        <h2 class={styles.sectionHeading} id="donnees-heading">Données collectées</h2>
+        <div class={styles.text}>
+          <p>
+            Les seules données personnelles collectées le sont via le formulaire de contact
+            du site. Aucune donnée n'est collectée à des fins publicitaires ou revendue à des tiers.
+          </p>
+        </div>
+
+        <table class={styles.dataTable}>
+          <thead>
+            <tr>
+              <th scope="col">Donnée</th>
+              <th scope="col">Finalité</th>
+              <th scope="col">Base légale</th>
+              <th scope="col">Conservation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Nom complet</td>
+              <td>Identifier l'expéditeur de la demande</td>
+              <td>Intérêt légitime</td>
+              <td>3 ans</td>
+            </tr>
+            <tr>
+              <td>Adresse e-mail</td>
+              <td>Répondre à votre demande de contact</td>
+              <td>Intérêt légitime</td>
+              <td>3 ans</td>
+            </tr>
+            <tr>
+              <td>Numéro de téléphone</td>
+              <td>Vous recontacter si nécessaire</td>
+              <td>Intérêt légitime</td>
+              <td>3 ans</td>
+            </tr>
+            <tr>
+              <td>Message libre</td>
+              <td>Traiter votre demande</td>
+              <td>Intérêt légitime</td>
+              <td>3 ans</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Section 3 : Destinataires -->
+      <section class={styles.section} aria-labelledby="destinataires-heading">
+        <p class={styles.sectionTitle}>03</p>
+        <h2 class={styles.sectionHeading} id="destinataires-heading">Destinataires des données</h2>
+        <div class={styles.text}>
+          <p>Vos données sont traitées uniquement par :</p>
+          <p>
+            <strong>ARX Consulting</strong> — destinataire principal de vos demandes de contact.
+          </p>
+          <p>
+            <strong>Web3Forms</strong> — service tiers utilisé pour la transmission du formulaire
+            de contact. Leur politique de confidentialité est disponible à l'adresse&nbsp;:
+            <a href="https://web3forms.com/privacy" target="_blank" rel="noopener noreferrer">web3forms.com/privacy</a>.
+          </p>
+          <p>Aucune donnée n'est transmise à des tiers à des fins commerciales.</p>
+        </div>
+      </section>
+
+      <!-- Section 4 : Droits -->
+      <section class={styles.section} aria-labelledby="droits-heading">
+        <p class={styles.sectionTitle}>04</p>
+        <h2 class={styles.sectionHeading} id="droits-heading">Vos droits (RGPD)</h2>
+        <div class={styles.text}>
+          <p>Conformément au RGPD, vous disposez des droits suivants :</p>
+        </div>
+
+        <ul class={styles.rightsList}>
+          {rights.map(right => (
+            <li class={styles.rightsItem}>
+              <span class={styles.rightsItem__bullet} aria-hidden="true">
+                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="2,6 5,9 10,3"/>
+                </svg>
+              </span>
+              <span>
+                <strong>{right.label}</strong> — {right.description}
+              </span>
+            </li>
+          ))}
+        </ul>
+
+        <div class={styles.infoBlock} style="margin-top: 1.5rem;">
+          <div class={styles.infoRow}>
+            <span class={styles.infoLabel}>Exercer vos droits</span>
+            <span class={styles.infoValue}>
+              <a href="mailto:contact@arxconsulting.com">contact@arxconsulting.com</a>
+            </span>
+          </div>
+          <div class={styles.infoRow}>
+            <span class={styles.infoLabel}>Autorité de contrôle</span>
+            <span class={styles.infoValue}>
+              <a href="https://www.autoriteprotectiondonnees.be" target="_blank" rel="noopener noreferrer">
+                Autorité de Protection des Données (Belgique)
+              </a>
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5 : Cookies -->
+      <section class={styles.section} aria-labelledby="cookies-heading">
+        <p class={styles.sectionTitle}>05</p>
+        <h2 class={styles.sectionHeading} id="cookies-heading">Cookies</h2>
+        <div class={styles.text}>
+          <p>
+            Ce site n'utilise pas de cookies de suivi ou publicitaires. Seuls des cookies
+            techniques strictement nécessaires au bon fonctionnement du site peuvent être
+            déposés sur votre terminal.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 6 : Sécurité -->
+      <section class={styles.section} aria-labelledby="securite-heading">
+        <p class={styles.sectionTitle}>06</p>
+        <h2 class={styles.sectionHeading} id="securite-heading">Sécurité</h2>
+        <div class={styles.text}>
+          <p>
+            ARX Consulting met en œuvre des mesures techniques et organisationnelles appropriées
+            pour protéger vos données contre tout accès non autorisé, perte, altération
+            ou divulgation.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 7 : Modifications -->
+      <section class={styles.section} aria-labelledby="modif-heading">
+        <p class={styles.sectionTitle}>07</p>
+        <h2 class={styles.sectionHeading} id="modif-heading">Modifications de la politique</h2>
+        <div class={styles.text}>
+          <p>
+            Cette politique de confidentialité peut être mise à jour à tout moment afin de
+            refléter les évolutions légales ou les changements dans nos pratiques. La date de
+            dernière mise à jour est indiquée ci-dessous.
+          </p>
+        </div>
+      </section>
+
+      <p class={styles.updateDate}>Dernière mise à jour : mars 2025</p>
+
+    </div>
+  </main>
+
+  <Footer />
+
+</BaseLayout>

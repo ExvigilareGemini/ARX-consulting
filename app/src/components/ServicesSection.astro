@@ -40,7 +40,10 @@ const { sectionLabel, heading, services } = Astro.props;
 
           <ul class={styles.cardList}>
             {service.items.map(item => (
-              <li class={styles.cardListItem}>{item}</li>
+              <div class={styles.cardListItemContainer}>
+                <span class={styles.cardListItemRectangle}></span>
+                <li class={styles.cardListItem}>{item}</li>
+              </div>
             ))}
           </ul>
 

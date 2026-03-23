@@ -3,10 +3,10 @@ import styles from './Footer.module.scss';
 import Logo from "../../public/images/logoWhite.svg"
 
 const navLinks = [
-  { label: 'Accueil', href: '#hero' },
-  { label: 'Qui sommes-nous ?', href: '#about' },
-  { label: 'Nos services', href: '#services' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Accueil', href: '/#hero' },
+  { label: 'Qui sommes-nous ?', href: '/#about' },
+  { label: 'Nos services', href: '/#services' },
+  { label: 'Contact', href: '/#contact' },
 ];
 
 const currentYear = new Date().getFullYear();
@@ -17,17 +17,18 @@ const currentYear = new Date().getFullYear();
 
     <div class={styles.inner}>
 
-      <!-- Brand -->
       <div class={styles.brand}>
-        <div class={styles.logoWrap}>
-          <!-- Logo placeholder : remplacer par votre SVG -->
-          <Logo><Logo/>
-          ARX Consulting
+        <div class={styles.logoContainer}>
+
+          <div class={styles.logoWrap}>
+            <Logo><Logo/>
+            </div>
+            <h2 class={styles.logoTitle}>ARX</h2>
+            <h4 class={styles.logoSubTitle}>Consulting</h4>
+          <p class={styles.tagline}>Les formations en cybersécurité à portée de main</p>
         </div>
-        <p class={styles.tagline}>Les formations en cybersécurité à portée de main</p>
       </div>
 
-      <!-- Nav -->
       <nav class={styles.navCol} aria-label="Navigation pied de page">
         {navLinks.map(link => (
           <a href={link.href} class={styles.navLink}>{link.label}</a>
@@ -36,7 +37,6 @@ const currentYear = new Date().getFullYear();
 
     </div>
 
-    <!-- Bottom bar -->
     <div class={styles.bottom}>
       <div class={styles.legal}>
         <a href="/mentions-legales" class={styles.legalLink}>Mentions légales</a>

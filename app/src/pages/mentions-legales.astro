@@ -1,0 +1,189 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import styles from '../styles/mentions-legales.module.scss';
+---
+
+<BaseLayout
+  title="Mentions légales – ARX Consulting"
+  description="Mentions légales du site ARX Consulting, organisme de formation en cybersécurité."
+>
+  <Header />
+
+  <main class={styles.page}>
+
+    <!-- Band hero -->
+    <div class={styles.band}>
+      <div class={styles.bandInner}>
+        <p class={styles.bandLabel}>Informations légales</p>
+        <h1 class={styles.bandTitle}>
+          MENTIONS<br />
+          <span class={styles.bandTitle__accent}>LÉGALES</span>
+        </h1>
+      </div>
+    </div>
+
+    <div class={styles.content}>
+
+      <!-- Section 1 : Éditeur -->
+      <section class={styles.section} aria-labelledby="editeur-heading">
+        <p class={styles.sectionTitle}>01</p>
+        <h2 class={styles.sectionHeading} id="editeur-heading">Éditeur du site</h2>
+
+        <div class={styles.infoBlock}>
+          <div class={styles.infoRow}>
+            <span class={styles.infoLabel}>Raison sociale</span>
+            <span class={styles.infoValue}>[NOM DE LA SOCIÉTÉ]</span>
+          </div>
+          <div class={styles.infoRow}>
+            <span class={styles.infoLabel}>Forme juridique</span>
+            <span class={styles.infoValue}>[SRL / SA / Indépendant]</span>
+          </div>
+          <div class={styles.infoRow}>
+            <span class={styles.infoLabel}>Numéro BCE</span>
+            <span class={styles.infoValue}>[BE 0000.000.000]</span>
+          </div>
+          <div class={styles.infoRow}>
+            <span class={styles.infoLabel}>Siège social</span>
+            <span class={styles.infoValue}>[Rue …, Code postal Ville, Belgique]</span>
+          </div>
+          <div class={styles.infoRow}>
+            <span class={styles.infoLabel}>Email</span>
+            <span class={styles.infoValue}>
+              <a href="mailto:contact@arxconsulting.com">contact@arxconsulting.com</a>
+            </span>
+          </div>
+          <div class={styles.infoRow}>
+            <span class={styles.infoLabel}>Téléphone</span>
+            <span class={styles.infoValue}>
+              <a href="tel:+3249937373">+32 499 37 37 37</a>
+            </span>
+          </div>
+          <div class={styles.infoRow}>
+            <span class={styles.infoLabel}>Responsable de publication</span>
+            <span class={styles.infoValue}>[Prénom NOM]</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2 : Hébergement -->
+      <section class={styles.section} aria-labelledby="hebergement-heading">
+        <p class={styles.sectionTitle}>02</p>
+        <h2 class={styles.sectionHeading} id="hebergement-heading">Hébergement</h2>
+
+        <div class={styles.infoBlock}>
+          <div class={styles.infoRow}>
+            <span class={styles.infoLabel}>Hébergeur</span>
+            <span class={styles.infoValue}>o2switch</span>
+          </div>
+          <div class={styles.infoRow}>
+            <span class={styles.infoLabel}>Adresse</span>
+            <span class={styles.infoValue}>222-224 Boulevard Gustave Flaubert, 63000 Clermont-Ferrand, France</span>
+          </div>
+          <div class={styles.infoRow}>
+            <span class={styles.infoLabel}>Site web</span>
+            <span class={styles.infoValue}>
+              <a href="https://www.o2switch.fr" target="_blank" rel="noopener noreferrer">www.o2switch.fr</a>
+            </span>
+          </div>
+          <div class={styles.infoRow}>
+            <span class={styles.infoLabel}>Téléphone</span>
+            <span class={styles.infoValue}>
+              <a href="tel:+33444446040">+33 4 44 44 60 40</a>
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3 : Propriété intellectuelle -->
+      <section class={styles.section} aria-labelledby="propriete-heading">
+        <p class={styles.sectionTitle}>03</p>
+        <h2 class={styles.sectionHeading} id="propriete-heading">Propriété intellectuelle</h2>
+        <div class={styles.text}>
+          <p>
+            L'ensemble des éléments constituant le site ARX Consulting (textes, graphiques, logiciels,
+            photographies, images, sons, plans, logos, marques…) est la propriété exclusive d'ARX
+            Consulting ou de ses partenaires.
+          </p>
+          <p>
+            Toute reproduction, représentation, modification, publication, adaptation ou exploitation,
+            même partielle, de ces éléments est interdite sans l'accord écrit préalable d'ARX Consulting.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 4 : RGPD -->
+      <section class={styles.section} aria-labelledby="rgpd-heading">
+        <p class={styles.sectionTitle}>04</p>
+        <h2 class={styles.sectionHeading} id="rgpd-heading">Protection des données personnelles (RGPD)</h2>
+        <div class={styles.text}>
+          <p>
+            Conformément au Règlement Général sur la Protection des Données (RGPD — UE 2016/679)
+            et à la législation belge applicable, vous disposez des droits suivants concernant
+            vos données personnelles :
+          </p>
+          <p>
+            <strong>Droit d'accès</strong> à vos données — <strong>Droit de rectification</strong> —
+            <strong>Droit à l'effacement</strong> (« droit à l'oubli ») —
+            <strong>Droit à la limitation</strong> du traitement —
+            <strong>Droit à la portabilité</strong> —
+            <strong>Droit d'opposition</strong>.
+          </p>
+          <p>
+            Pour exercer ces droits, contactez-nous à :
+            <a href="mailto:contact@arxconsulting.com">contact@arxconsulting.com</a>
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 5 : Cookies -->
+      <section class={styles.section} aria-labelledby="cookies-heading">
+        <p class={styles.sectionTitle}>05</p>
+        <h2 class={styles.sectionHeading} id="cookies-heading">Cookies</h2>
+        <div class={styles.text}>
+          <p>
+            Ce site est susceptible d'utiliser des cookies techniques nécessaires à son bon
+            fonctionnement. Aucun cookie publicitaire ou de suivi tiers n'est déposé sans
+            votre consentement préalable.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 6 : Limitation de responsabilité -->
+      <section class={styles.section} aria-labelledby="responsabilite-heading">
+        <p class={styles.sectionTitle}>06</p>
+        <h2 class={styles.sectionHeading} id="responsabilite-heading">Limitation de responsabilité</h2>
+        <div class={styles.text}>
+          <p>
+            ARX Consulting s'efforce d'assurer l'exactitude et la mise à jour des informations
+            publiées sur ce site. Toutefois, ARX Consulting ne peut garantir l'exactitude,
+            la précision ou l'exhaustivité des informations mises à disposition.
+          </p>
+          <p>
+            ARX Consulting décline toute responsabilité pour tout dommage résultant d'une
+            utilisation frauduleuse ou abusive du site.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 7 : Droit applicable -->
+      <section class={styles.section} aria-labelledby="droit-heading">
+        <p class={styles.sectionTitle}>07</p>
+        <h2 class={styles.sectionHeading} id="droit-heading">Droit applicable</h2>
+        <div class={styles.text}>
+          <p>
+            Les présentes mentions légales sont soumises au droit belge. En cas de litige,
+            les tribunaux compétents seront ceux du ressort du siège social d'ARX Consulting.
+          </p>
+        </div>
+      </section>
+
+      <p class={styles.updateDate}>Dernière mise à jour : mars 2025</p>
+
+    </div>
+  </main>
+
+  <Footer />
+
+</BaseLayout>

@@ -1,4 +1,6 @@
 @use "sass:color";
+@use "../styles/mixins" as *;
+
 
 // ─── Fonts ───────────────────────────────────────────────
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap");
@@ -27,11 +29,10 @@
   --radius-md: 8px;
   --radius-lg: 16px;
 
-  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition: 0.5s;
 
-  --max-width: 1200px;
-  --section-px: clamp(1.5rem, 5vw, 6rem);
-  --section-py: clamp(4rem, 8vw, 8rem);
+  --max-width: 1400px;
+  --header-height: 75px;
 }
 
 // ─── Reset ───────────────────────────────────────────────
@@ -86,9 +87,11 @@ button {
 
 .section-label {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.18em;
+  font-size: 0.8rem;
+  font-weight: 500;
   text-transform: uppercase;
-  color: var(--color-text-muted);
-  margin-bottom: 1rem;
+  color: var(--color-text-grey);
+  @include for-tablet-portrait-up {
+    text-align: center;
+  }
 }

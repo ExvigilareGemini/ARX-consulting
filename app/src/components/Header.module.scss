@@ -1,17 +1,30 @@
+@use "../styles/mixins" as *;
+
 .header {
   position: fixed;
+  display: flex;
+  justify-content: center;
   top: 0;
   left: 0;
   right: 0;
+  // height: var(--header-height);
+  width: 100vw;
   z-index: 100;
-  padding: 1.2rem 0;
-  transition: background var(--transition), box-shadow var(--transition);
+  margin: 0 0 1.2rem 0;
+  transition:
+    background var(--transition),
+    box-shadow var(--transition);
   background-color: white;
+  transition: all var(--transition);
 
-  &.scrolled {
-    background: rgba(13, 14, 15, 0.92);
-    backdrop-filter: blur(12px);
-    box-shadow: 0 1px 0 var(--color-border);
+  @media (max-width: 768px) {
+    padding: 1rem;
+    margin: unset;
+    height: fit-content;
+    z-index: 1000;
+    &.scrolled {
+      transform: translateY(-50%);
+    }
   }
 }
 
@@ -19,32 +32,53 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin: 1.2rem;
   max-width: var(--max-width);
-  margin-inline: auto;
-  padding-inline: var(--section-px);
+  width: 100%;
+  height: var(--header-height);
 }
 
-.logo {
+.logowrapper {
   display: flex;
+  height: 100%;
   align-items: center;
-  gap: 0.6rem;
-  font-family: var(--font-mono);
-  font-weight: 700;
-  font-size: 1rem;
-  letter-spacing: 0.05em;
-  color: var(--color-text);
-  text-decoration: none;
+  transition: all var(--transition);
 
-  &:hover {
-    color: var(--color-accent);
+  @include for-tablet-portrait-up {
+    flex-grow: 1;
+    justify-content: center;
+    &.scrolled {
+      transform: translate(-40%, 45%) scale(50%);
+    }
   }
 
-  img, svg {
-    width: 40px;
-    height: 40px;
+  img,
+  svg {
+    width: 100%;
+    height: 100%;
+    margin-right: 0.6rem;
+    @include for-tablet-portrait-up {
+      width: 100px;
+      height: 100px;
+      transform: translateX(20%);
+    }
   }
 }
 
+.logoTitle {
+  font-family: var(--font-mono);
+  font-size: 2rem;
+  line-height: 0.9;
+  margin: 0.5rem 0 0 0;
+}
+.logoSubTitle {
+  font-family: var(--font-mono);
+}
+.logoTitleWrap {
+    @media (max-width: 768px) {
+display: none;
+  }
+}
 .nav {
   display: flex;
   align-items: center;
@@ -65,7 +99,7 @@
   position: relative;
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: -4px;
     left: 0;
@@ -88,28 +122,33 @@
 .burger {
   display: none;
   flex-direction: column;
-  justify-content: center;
-  gap: 5px;
-  width: 36px;
-  height: 36px;
-  padding: 6px;
+  justify-content: space-evenly;
+  width: 40px;
+  height: 40px;
+  padding: 5px;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
   background: transparent;
   cursor: pointer;
-  transition: border-color var(--transition);
+  transition: all var(--transition);
   z-index: 110;
 
   @media (max-width: 768px) {
     display: flex;
+    &.scrolled {
+      transform: translateY(90%);
+    }
   }
 
   span {
     display: block;
-    height: 1.5px;
-    background: var(--color-text);
+    height: 5px;
+    margin: 0;
+    background: var(--color-text-grey-dark);
     border-radius: 2px;
-    transition: transform var(--transition), opacity var(--transition);
+    transition:
+      transform var(--transition),
+      opacity var(--transition);
     transform-origin: center;
   }
 
@@ -117,13 +156,13 @@
     border-color: var(--color-accent);
 
     span:nth-child(1) {
-      transform: translateY(6.5px) rotate(45deg);
+      transform: translateY(8px) rotate(45deg);
     }
     span:nth-child(2) {
       opacity: 0;
     }
     span:nth-child(3) {
-      transform: translateY(-6.5px) rotate(-45deg);
+      transform: translateY(-8px) rotate(-45deg);
     }
   }
 }
@@ -132,15 +171,17 @@
 .drawer {
   display: none;
   position: fixed;
-  inset: 0;
   z-index: 90;
-  background: var(--color-bg);
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 2.5rem;
   transform: translateX(100%);
   transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: var(--color-bg-light);
 
   @media (max-width: 768px) {
     display: flex;
@@ -159,6 +200,7 @@
   color: var(--color-text-muted);
   text-transform: uppercase;
   transition: color var(--transition);
+  margin: 1rem;
 
   &:hover {
     color: var(--color-accent);

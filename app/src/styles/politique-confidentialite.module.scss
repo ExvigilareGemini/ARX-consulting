@@ -1,0 +1,262 @@
+// ─── Réutilise la même structure visuelle que mentions-legales ───
+// Ce fichier est identique dans sa logique, adapté si besoin
+
+.page {
+  background-color: var(--color-bg-light);
+  min-height: 100svh;
+  padding-top: 120px;
+  padding-bottom: var(--section-py);
+}
+
+// ─── Band hero ────────────────────────────────────────────
+.band {
+  background-color: var(--color-bg);
+  padding-block: 5rem 4rem;
+  margin-bottom: 4rem;
+}
+
+.bandInner {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--section-px);
+}
+
+.bandLabel {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 1rem;
+}
+
+.bandTitle {
+  font-family: var(--font-mono);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+  color: var(--color-text);
+}
+
+.bandTitle__accent {
+  color: var(--color-accent);
+}
+
+// ─── Content layout ───────────────────────────────────────
+.content {
+  max-width: 820px;
+  margin-inline: auto;
+  padding-inline: var(--section-px);
+}
+
+// ─── Sections ─────────────────────────────────────────────
+.section {
+  margin-bottom: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid #dcdcd4;
+
+  &:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+}
+
+.sectionTitle {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-accent-dim);
+  margin-bottom: 1.25rem;
+}
+
+.sectionHeading {
+  font-family: var(--font-mono);
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #0d0e0f;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+// ─── Body text ────────────────────────────────────────────
+.text {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: #4a4a44;
+  line-height: 1.85;
+
+  p {
+    margin-bottom: 0.9rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  a {
+    color: var(--color-accent-dim);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color var(--transition);
+
+    &:hover {
+      color: #007d70;
+    }
+  }
+
+  strong {
+    font-weight: 600;
+    color: #1a1a18;
+  }
+}
+
+// ─── Table des données collectées ────────────────────────
+.dataTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: 0.83rem;
+  font-family: var(--font-body);
+
+  @media (max-width: 600px) {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+
+.dataTable th {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #8a8a82;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  background: #efefeb;
+  border-bottom: 2px solid #dcdcd4;
+}
+
+.dataTable td {
+  padding: 0.85rem 1rem;
+  color: #2a2a28;
+  border-bottom: 1px solid #e8e8e0;
+  vertical-align: top;
+  line-height: 1.6;
+}
+
+.dataTable tr:last-child td {
+  border-bottom: none;
+}
+
+.dataTable tr:nth-child(even) td {
+  background: #f9f9f6;
+}
+
+// ─── Droits list ──────────────────────────────────────────
+.rightsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.rightsItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: #2a2a28;
+  line-height: 1.6;
+}
+
+.rightsItem__bullet {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(0, 229, 200, 0.12);
+  border: 1px solid rgba(0, 179, 158, 0.3);
+  flex-shrink: 0;
+  margin-top: 1px;
+
+  svg {
+    width: 12px;
+    height: 12px;
+    color: var(--color-accent-dim);
+  }
+}
+
+// ─── Info block ───────────────────────────────────────────
+.infoBlock {
+  background: #fff;
+  border: 1px solid #e0e0d8;
+  border-left: 3px solid var(--color-accent);
+  border-radius: var(--radius-md);
+  padding: 1.5rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.infoRow {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  font-size: 0.83rem;
+  color: #2a2a28;
+  font-family: var(--font-body);
+  line-height: 1.5;
+}
+
+.infoLabel {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #8a8a82;
+  min-width: 160px;
+  flex-shrink: 0;
+
+  @media (max-width: 540px) {
+    min-width: unset;
+    width: 100%;
+  }
+}
+
+.infoValue {
+  color: #1a1a18;
+  font-size: 0.85rem;
+
+  a {
+    color: var(--color-accent-dim);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+
+    &:hover {
+      color: #007d70;
+    }
+  }
+}
+
+// ─── Update date ──────────────────────────────────────────
+.updateDate {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: #b0b0a8;
+  letter-spacing: 0.05em;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  text-align: right;
+}

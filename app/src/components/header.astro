@@ -1,27 +1,37 @@
 ---
-import styles from './Header.module.scss';
-import Logo from "../../public/images/logo.svg"
+import styles from "./Header.module.scss";
+import Logo from "../../public/images/logo.svg";
 
 const navLinks = [
-  { label: 'Accueil', href: '#hero' },
-  { label: 'Qui sommes-nous ?', href: '#about' },
-  { label: 'Nos services', href: '#services' },
-  { label: 'Contact', href: '#contact' },
+  { label: "Accueil", href: "/#hero" },
+  { label: "Qui sommes-nous ?", href: "/#about" },
+  { label: "Nos services", href: "/#services" },
+  { label: "Contact", href: "/#contact" },
 ];
 ---
 
 <header class={styles.header} id="site-header">
   <div class={styles.inner}>
-    <a href="#hero" class={styles.logo} aria-label="ARX Consulting – Accueil">
-      <!-- Logo placeholder : remplacer par votre SVG -->
-      <Logo><Logo/>
-      ARX Consulting
+    <a
+      href="/#hero"
+      id="logowrapper"
+      class={styles.logowrapper}
+      aria-label="ARX Consulting – Accueil"
+    >
+      <Logo />
+      <div class={styles.logoTitleWrap}>
+        <h2 class={styles.logoTitle}>ARX</h2>
+        <h4 class={styles.logoSubTitle}>Consulting</h4>
+      </div>
     </a>
-
     <nav class={styles.nav} aria-label="Navigation principale">
-      {navLinks.map(link => (
-        <a href={link.href} class={styles.navLink}>{link.label}</a>
-      ))}
+      {
+        navLinks.map((link) => (
+          <a href={link.href} class={styles.navLink}>
+            {link.label}
+          </a>
+        ))
+      }
     </nav>
 
     <button
@@ -35,22 +45,26 @@ const navLinks = [
       <span></span>
       <span></span>
     </button>
+
+    <!-- Mobile drawer -->
+    <nav
+      class={styles.drawer}
+      id="mobile-drawer"
+      aria-label="Navigation mobile"
+      aria-hidden="true"
+    >
+      {
+        navLinks.map((link) => (
+          <a href={link.href} class={styles.drawerLink} data-drawer-link>
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <script>
+      import { initHeader } from "../scripts/header.js";
+      initHeader();
+    </script>
   </div>
 </header>
-
-<!-- Mobile drawer -->
-<nav
-  class={styles.drawer}
-  id="mobile-drawer"
-  aria-label="Navigation mobile"
-  aria-hidden="true"
->
-  {navLinks.map(link => (
-    <a href={link.href} class={styles.drawerLink} data-drawer-link>{link.label}</a>
-  ))}
-</nav>
-
-<script>
-  import { initHeader } from '../scripts/header.js';
-  initHeader();
-</script>
