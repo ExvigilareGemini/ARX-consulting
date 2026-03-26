@@ -1,10 +1,17 @@
 ---
 import styles from './ServicesSection.module.scss';
 
+export interface ServiceItem {
+  label: string;
+  detail: string;
+}
+
 export interface ServiceCard {
   title: string;
+  subtitle: string;
   description: string;
-  items: string[];
+  items: ServiceItem[];
+  moreInfo: string;
 }
 
 export interface Props {
@@ -12,7 +19,6 @@ export interface Props {
   heading: string;
   services: ServiceCard[];
 }
-
 const { sectionLabel, heading, services } = Astro.props;
 ---
 
@@ -25,27 +31,100 @@ const { sectionLabel, heading, services } = Astro.props;
     </div>
 
     <div class={styles.grid}>
-      {services.map(service => (
+      {services.map((service, cardIndex) => (
         <article class={styles.card}>
 
-          <div class={styles.iconWrap} aria-hidden="true">
-            <!-- Icône générique : ampoule / shield -->
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9 18h6M10 21h4M12 2a7 7 0 0 1 4 12.906V17H8v-2.094A7 7 0 0 1 12 2z"/>
-            </svg>
+          <div class={styles.cardTop}>
+            <div class={styles.iconWrap} aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 18h6M10 21h4M12 2a7 7 0 0 1 4 12.906V17H8v-2.094A7 7 0 0 1 12 2z"/>
+              </svg>
+            </div>
+
+            <h3 class={styles.cardTitle}>{service.title}</h3>
+            <p class={styles.cardSubTitle}>{service.subtitle}</p>
+            <p class={styles.cardText}>{service.description}</p>
           </div>
 
-          <h3 class={styles.cardTitle}>{service.title}</h3>
-          <p class={styles.cardText}>{service.description}</p>
-
+          <!-- List items avec détail déroulant -->
           <ul class={styles.cardList}>
-            {service.items.map(item => (
-              <div class={styles.cardListItemContainer}>
-                <span class={styles.cardListItemRectangle}></span>
-                <li class={styles.cardListItem}>{item}</li>
-              </div>
-            ))}
+            {service.items.map((item, itemIndex) => {
+              const detailId = `detail-${cardIndex}-${itemIndex}`;
+              const triggerId = `trigger-${cardIndex}-${itemIndex}`;
+              return (
+                <li class={styles.listItem}>
+                  <button
+                    class={styles.listItemTrigger}
+                    id={triggerId}
+                    aria-expanded="false"
+                    aria-controls={detailId}
+                    data-accordion-trigger
+                  >
+                    <div class={styles.listItemWrapper}>
+                      <span class={styles.cardListItemRectangle}></span>
+                      <span class={styles.listItemLabel}>{item.label}</span>
+                    </div>
+                    <svg class={styles.listItemChevron} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <polyline points="6 9 12 15 18 9"/>
+                    </svg>
+                  </button>
+
+                  <div
+                    class={styles.listItemDetail}
+                    id={detailId}
+                    role="region"
+                    aria-labelledby={triggerId}
+                    data-accordion-panel
+                    data-open-class={styles.open}
+                  >
+                    <div class={styles.listItemDetailInner}>
+                      <p class={styles.listItemDetailText}>{item.detail}</p>
+                    </div>
+                  </div>
+                </li>
+              );
+            })}
           </ul>
+
+          <!-- Footer : plus d'info sur le module -->
+          <div class={styles.cardFooter}>
+            {(() => {
+              const footerId = `footer-detail-${cardIndex}`;
+              const footerTriggerId = `footer-trigger-${cardIndex}`;
+              return (
+                <>
+                  <button
+                    class={styles.cardFooterTrigger}
+                    id={footerTriggerId}
+                    aria-expanded="false"
+                    aria-controls={footerId}
+                    data-accordion-trigger
+                  >
+                    <span class={styles.cardFooterLabel}>Plus d'informations</span>
+                    <svg class={styles.cardFooterChevron} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <polyline points="6 9 12 15 18 9"/>
+                    </svg>
+                  </button>
+
+                  <div
+                    class={styles.cardFooterDetail}
+                    id={footerId}
+                    role="region"
+                    aria-labelledby={footerTriggerId}
+                    data-accordion-panel
+                    data-open-class={styles.open}
+                  >
+                    <div class={styles.cardFooterDetailInner}>
+                      {service.moreInfo.map((info) => {
+
+                      return <p class={styles.cardFooterDetailText}>- {info}</p>
+                      })}
+                    </div>
+                  </div>
+                </>
+              );
+            })()}
+          </div>
 
         </article>
       ))}
@@ -53,3 +132,8 @@ const { sectionLabel, heading, services } = Astro.props;
 
   </div>
 </section>
+
+<script>
+  import { initAccordions } from '../scripts/accordion.js';
+  initAccordions();
+</script>

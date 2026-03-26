@@ -36,10 +36,11 @@
 
 ### Module 1
 
-- **Titre :** Comprendre les arnaques modernes
-- **Description :** Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+- **Titre :** Prévention numérique pour seniors
+- **Description :** Chaque jour, des seniors perdent de l'argent ou leur vie privée à cause d'arnaques numériques.
+Cette formation leur donne les réflexes concrets pour naviguer en sécurité. 4 modules indépendants, 2 heures chacun.
 - **Liste :**
-  - Phishing (emails frauduleux)
+  - Arnaques & Phishing : Reconnaître les emails, SMS et appels frauduleux. Savoir quoi faire si on a cliqué. Signaler une arnaque.
   - Faux SMS bancaires
   - Faux support technique
   - Arnaques Facebook / WhatsApp

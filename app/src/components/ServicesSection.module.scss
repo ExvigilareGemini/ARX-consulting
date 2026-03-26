@@ -31,11 +31,12 @@
 
 // ─── Cards grid ──────────────────────────────────────────
 .grid {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: start;
+
   @include for-tablet-portrait-up {
-    width: 100%;
-    flex-direction: column;
+    grid-template-columns: 1fr;
   }
 }
 
@@ -45,17 +46,11 @@
   padding: 2rem 1.75rem;
   margin: 0 3rem 0 0;
   width: 350px;
-  transition:
-    border-color var(--transition),
-    transform var(--transition);
+  justify-self: center;
 
-  &:hover {
-    border-color: var(--color-accent);
-    transform: translateY(-4px);
-  }
-    @include for-tablet-portrait-up {
+  @include for-tablet-portrait-up {
     width: 100%;
-      margin: 0 0 3rem 0;
+    margin: 0 0 3rem 0;
   }
 }
 
@@ -73,12 +68,21 @@
 
 .cardTitle {
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: 1rem;
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--color-text);
+  text-align: justify;
+}
+.cardSubTitle {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--color-text);
   margin-bottom: 0.75rem;
+  text-align: center;
 }
 
 .cardText {
@@ -92,13 +96,144 @@
 .cardList {
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  margin-top: 1rem;
 }
 
-.cardListItem {
+.listItem {
+  margin-bottom: 0.2rem;
+}
+
+.listItemTrigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.65rem 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+
+  &[aria-expanded="true"] {
+    color: var(--color-text);
+
+    .listItemChevron {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.listItemLabel {
   font-family: var(--font-mono);
   font-size: 0.72rem;
   letter-spacing: 0.03em;
+}
+
+.listItemChevron {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  color: var(--color-text-muted);
+  transition: transform var(--transition);
+}
+
+.listItemDetail {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &.open {
+    grid-template-rows: 1fr;
+  }
+}
+
+.listItemDetailInner {
+  overflow: hidden;
+}
+
+.listItemDetailText {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  padding-bottom: 0.75rem;
+  padding-left: 0.75rem;
+  border-left: 2px solid var(--color-accent);
+  margin-left: 0.25rem;
+}
+
+// ─── Footer déroulant "Plus d'info" ──────────────────────
+.cardFooter {
+  margin-top: auto;
+  border-top: 1px solid var(--color-border);
+}
+
+.cardFooterTrigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 1rem 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+
+  &[aria-expanded="true"] {
+    color: var(--color-text);
+
+    .cardFooterChevron {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.cardFooterLabel {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cardFooterChevron {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  transition: transform var(--transition);
+}
+
+.cardFooterDetail {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &.open {
+    grid-template-rows: 1fr;
+  }
+}
+
+.cardFooterDetailInner {
+  overflow: hidden;
+}
+
+.cardFooterDetailText {
+  font-family: var(--font-body);
+  font-size: 0.83rem;
+  color: var(--color-text-muted);
+  line-height: 1.75;
+  padding-bottom: 0.8rem;
 }
 
 .cardListItemRectangle {
@@ -110,7 +245,7 @@
   border-radius: 50%;
 }
 
-.cardListItemContainer {
+.listItemWrapper {
   display: flex;
   align-items: center;
 }

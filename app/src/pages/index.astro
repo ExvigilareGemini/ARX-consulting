@@ -1,27 +1,27 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
-import HeroSection from '../components/HeroSection.astro';
-import AboutSection from '../components/AboutSection.astro';
-import ServicesSection from '../components/ServicesSection.astro';
-import ContactSection from '../components/ContactSection.astro';
-import Footer from '../components/Footer.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import HeroSection from "../components/HeroSection.astro";
+import AboutSection from "../components/AboutSection.astro";
+import ServicesSection from "../components/ServicesSection.astro";
+import ContactSection from "../components/ContactSection.astro";
+import Footer from "../components/Footer.astro";
 
 // ─── About data ──────────────────────────────────────────
 const team = [
   {
-    name: 'Cameron Williamson',
-    bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
+    name: "Cameron Williamson",
+    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
     // imageSrc: '/images/cameron-williamson.jpg',
   },
   {
-    name: 'Wade Warren',
-    bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
+    name: "Wade Warren",
+    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
     // imageSrc: '/images/wade-warren.jpg',
   },
   {
-    name: 'Guy Hawkins',
-    bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
+    name: "Guy Hawkins",
+    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
     // imageSrc: '/images/guy-hawkins.jpg',
   },
 ];
@@ -29,36 +29,103 @@ const team = [
 // ─── Services data ───────────────────────────────────────
 const services = [
   {
-    title: 'Comprendre les arnaques modernes',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    title: "Prévention numérique pour seniors",
+    subtitle: "Formation pratique • Sans jargon • Adaptée à votre rythme",
+    description:
+      "Chaque jour, des seniors perdent de l'argent ou leur vie privée à cause d'arnaques numériques. Cette formation leur donne les réflexes concrets pour naviguer en sécurité. 4 modules de 2h.",
     items: [
-      'Phishing (emails frauduleux)',
-      'Faux SMS bancaires',
-      'Faux support technique',
-      'Arnaques Facebook / WhatsApp',
-      'Démonstrations concrètes',
+      {
+        label: "Arnaques & Phishing",
+        detail:
+          "Reconnaître les emails, SMS et appels frauduleux. Savoir quoi faire si on a cliqué. Signaler une arnaque.",
+      },
+      {
+        label: "Mots de passe & Sécurité",
+        detail:
+          "Créer des mots de passe solides. Gestionnaire de mots de passe. Double authentification. Mises à jour.",
+      },
+      {
+        label: "Réseaux sociaux & Vie privée",
+        detail:
+          "Paramètres de confidentialité Facebook. Ce qu'il ne faut jamais publier. Faux profils et escroqueries.",
+      },
+      {
+        label: "Smartphones & Applications",
+        detail:
+          "Autorisations d'applications. Wi-Fi public. Que faire en cas de vol. Sauvegardes.",
+      },
+    ],
+    moreInfo: [
+      "Support de présentation projeté",
+      "Fiche récapitulative imprimée par participant",
+      "Quiz de fin de module",
+      "Attestation de participation",
+      "Vidéos courtes accessibles en ligne",
+      "Groupe max. 10 personnes - accompagnement individuel",
     ],
   },
   {
-    title: 'Comprendre les arnaques modernes',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    title: "Comprendre les arnaques modernes",
+    subtitle: "Sensibilisation & prévention",
+    description: "Lorem ipsum dolor sit amet...",
     items: [
-      'Phishing (emails frauduleux)',
-      'Faux SMS bancaires',
-      'Faux support technique',
-      'Arnaques Facebook / WhatsApp',
-      'Démonstrations concrètes',
+      {
+        label: "Phishing (emails frauduleux)",
+        detail: "Description du phishing...",
+      },
+      { label: "Faux SMS bancaires", detail: "Description du smishing..." },
+      {
+        label: "Faux support technique",
+        detail: "Description du faux support...",
+      },
+      {
+        label: "Arnaques Facebook / WhatsApp",
+        detail: "Description des arnaques réseaux sociaux...",
+      },
+      {
+        label: "Démonstrations concrètes",
+        detail: "Description des démonstrations...",
+      },
+    ],
+        moreInfo: [
+      "Support de présentation projeté",
+      "Fiche récapitulative imprimée par participant",
+      "Quiz de fin de module",
+      "Attestation de participation",
+      "Vidéos courtes accessibles en ligne",
+      "Groupe max. 10 personnes - accompagnement individuel",
     ],
   },
   {
-    title: 'Comprendre les arnaques modernes',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    title: "Comprendre les arnaques modernes",
+    subtitle: "Sensibilisation & prévention",
+    description: "Lorem ipsum dolor sit amet...",
     items: [
-      'Phishing (emails frauduleux)',
-      'Faux SMS bancaires',
-      'Faux support technique',
-      'Arnaques Facebook / WhatsApp',
-      'Démonstrations concrètes',
+      {
+        label: "Phishing (emails frauduleux)",
+        detail: "Description du phishing...",
+      },
+      { label: "Faux SMS bancaires", detail: "Description du smishing..." },
+      {
+        label: "Faux support technique",
+        detail: "Description du faux support...",
+      },
+      {
+        label: "Arnaques Facebook / WhatsApp",
+        detail: "Description des arnaques réseaux sociaux...",
+      },
+      {
+        label: "Démonstrations concrètes",
+        detail: "Description des démonstrations...",
+      },
+    ],
+        moreInfo: [
+      "Support de présentation projeté",
+      "Fiche récapitulative imprimée par participant",
+      "Quiz de fin de module",
+      "Attestation de participation",
+      "Vidéos courtes accessibles en ligne",
+      "Groupe max. 10 personnes - accompagnement individuel",
     ],
   },
 ];
@@ -101,7 +168,7 @@ const services = [
       sectionLabel="CONTACTEZ NOUS"
       heading="FAITES APPEL À NOS SERVICES"
       body="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-      email="contact@arxconsulting.com"
+      email="contact@arx-consulting.com"
       phone="+32 499 37 37 37"
       privacyUrl="/politique-de-confidentialite"
       web3formsKey="a0f6d48e-6b22-48fa-957a-3c0bdc5b9e94"
@@ -109,5 +176,4 @@ const services = [
   </main>
 
   <Footer />
-
 </BaseLayout>
